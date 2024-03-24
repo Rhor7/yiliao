@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="Zh">
+    <head>
+        <title>SCL-90症状自评量表</title>
+        <style>
+            /* CSS样式 */
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f2f2f2;
+                padding: 20px;
+            }
+    
+            h1 {
+                text-align: center;
+            }
+    
+            label {
+                display: block;
+                margin-bottom: 10px;
+                font-weight: bold;
+            }
+    
+            input[type="radio"] {
+                margin-right: 10px;
+            }
+    
+            button {
+                margin-top: 10px;
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+    
+            button:hover {
+                background-color: #45a049;
+            }
+    
+            #result {
+                font-weight: bold;
+                margin-top: 20px;
+            }
+    
+            .question-container {
+                margin-bottom: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>SCL-90症状自评量表</h1>
+        
+        <form id="scl90Form">
+            <!-- 问题选项 -->
+            <div class="question-container">
+                <label for="feeling">情绪状态：</label>
+                <input type="radio" name="feeling" id="feeling1" value="无">无
+                <input type="radio" name="feeling" id="feeling2" value="轻">轻
+                <input type="radio" name="feeling" id="feeling3" value="中">中
+                <input type="radio" name="feeling" id="feeling4" value="重">重
+                <input type="radio" name="feeling" id="feeling5" value="极重">极重
+            </div>
+    
+            <div class="question-container">
+                <label for="anxiety">焦虑：</label>
+                <input type="radio" name="anxiety" id="anxiety1" value="无">无
+                <input type="radio" name="anxiety" id="anxiety2" value="轻">轻
+                <input type="radio" name="anxiety" id="anxiety3" value="中">中
+                <input type="radio" name="anxiety" id="anxiety4" value="重">重
+                <input type="radio" name="anxiety" id="anxiety5" value="极重">极重
+            </div>
+    
+            <div class="question-container">
+                <label for="insomnia">失眠：</label>
+                <input type="radio" name="insomnia" id="insomnia1" value="无">无
+                <input type="radio" name="insomnia" id="insomnia2" value="轻">轻
+                <input type="radio" name="insomnia" id="insomnia3" value="中">中
+                <input type="radio" name="insomnia" id="insomnia4" value="重">重
+                <input type="radio" name="insomnia" id="insomnia5" value="极重">极重
+            </div>
+    
+            <div class="question-container">
+                <label for="depression">抑郁：</label>
+                <input type="radio" name="depression" id="depression1" value="无">无
+                <input type="radio" name="depression" id="depression2" value="轻">轻
+                <input type="radio" name="depression" id="depression3" value="中">中
+                <input type="radio" name="depression" id="depression4" value="重">重
+                <input type="radio" name="depression" id="depression5" value="极重">极重
+            </div>
+    
+            <div class="question-container">
+                <label for="obsessive">强迫症状：</label>
+                <input type="radio" name="obsessive" id="obsessive1" value="无">无
+                <input type="radio" name="obsessive" id="obsessive2" value="轻">轻
+                <input type="radio" name="obsessive" id="obsessive3" value="中">中
+                <input type="radio" name="obsessive" id="obsessive4" value="重">重
+                <input type="radio" name="obsessive" id="obsessive5" value="极重">极重
+            </div>
+    
+            <!-- 更多问题及选项... -->
+    
+            <!-- 提交按钮 -->
+            <button type="button" onclick="evaluateSCL90()">提交</button>
+        </form>
+    
+        <!-- 结果显示区域 -->
+        <div id="result"></div>
+    
+        <!-- JavaScript代码 -->
+        <script>
+            function evaluateSCL90() {
+                // 获取用户的选择
+                var feeling = document.querySelector('input[name="feeling"]:checked').value;
+                var anxiety = document.querySelector('input[name="anxiety"]:checked').value;
+                var insomnia = document.querySelector('input[name="insomnia"]:checked').value;
+                var depression = document.querySelector('input[name="depression"]:checked').value;
+                var obsessive = document.querySelector('input[name="obsessive"]:checked').value;
+    
+                // 根据选择进行症状评估
+                var result = '';
+                if(feeling == "无" && anxiety == "无" && insomnia == "无" && depression == "无" && obsessive == "无") {
+                    result = "您的症状评估结果：未发现明显症状";
+                } else if(feeling == "重" || anxiety == "重" || insomnia == "重" || depression == "重" || obsessive == "重") {
+                    result = "您的症状评估结果：可能存在较为严重的症状";
+                } else {
+                    result = "您的症状评估结果：存在中等程度的一些症状";
+                }
+    
+                // 显示结果
+                document.getElementById("result").innerHTML = result;
+            }
+        </script>
+    </body>
+</html>
